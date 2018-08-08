@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Financiera_Credimar.Models;
 
 namespace Financiera_Credimar
 {
@@ -22,6 +24,9 @@ namespace Financiera_Credimar
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<CredimarContext>(options =>
+                  options.UseSqlite("Data Source=financiera_credimar.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
