@@ -1,52 +1,17 @@
-﻿* {
-    padding: 0;
-    margin: 0;
+﻿body {
+    background: #F5F5F5;
 }
 
-body {
-    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
-    overflow: hidden;
-    margin: 0;
-    background: #F2F2F2;
-}
-
-.navbar-inverse {
-    background: #4CA4D8;
-    border: none;
-}
-
-.navbar-inverse .container .navbar-header a {
-    color: #F2F2F2;
-    font-size: 20px;
+.nav-wrapper a {
+    padding-left: 20px;
     font-weight: bold;
     letter-spacing: 3px;
+    color: #F5F5F5;
 }
 
-.navbar-inverse .container .navbar-collapse .nav .dropdown a {
-    color: #F2F2F2;
-    font-size: 15px;
+/*Footer*/
+.page-footer p {
+    padding-left: 20px;
     font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.navbar-inverse .container .navbar-collapse .nav .dropdown a:hover {
-    color: #0E66A5;
-}
-
-.navbar-inverse .navbar-nav>.open>a.dropdown-toggle{
-  background-color: #4CA4D8 !important;
-}
-
-.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu {
-    background: #4CA4D8;
-    border: none;
-    border-top: 3px solid #0E66A5;
-}
-
-.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu li {
-    background: #4CA4D8;
-}
-
-.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu li a {
-    background: #4CA4D8;
+    padding-bottom: 35px;
 }

@@ -16,8 +16,16 @@
 
     <ItemGroup>
       <Content Remove="wwwroot\css\menu.css" />
+      <Content Remove="wwwroot\materialize\css\materialize.css" />
+      <Content Remove="wwwroot\materialize\css\materialize.min.css" />
+      <Content Remove="wwwroot\materialize\js\materialize.js" />
+      <Content Remove="wwwroot\materialize\js\materialize.min.js" />
     </ItemGroup>
     <ItemGroup>
       <None Include="wwwroot\css\menu.css" />
+      <None Include="wwwroot\materialize\css\materialize.css" />
+      <None Include="wwwroot\materialize\css\materialize.min.css" />
+      <None Include="wwwroot\materialize\js\materialize.js" />
+      <None Include="wwwroot\materialize\js\materialize.min.js" />
     </ItemGroup>
 </Project>
