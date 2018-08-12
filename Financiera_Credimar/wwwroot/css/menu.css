@@ -1,0 +1,52 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    background: #F2F2F2;
+}
+
+.navbar-inverse {
+    background: #4CA4D8;
+    border: none;
+}
+
+.navbar-inverse .container .navbar-header a {
+    color: #F2F2F2;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.navbar-inverse .container .navbar-collapse .nav .dropdown a {
+    color: #F2F2F2;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar-inverse .container .navbar-collapse .nav .dropdown a:hover {
+    color: #0E66A5;
+}
+
+.navbar-inverse .navbar-nav>.open>a.dropdown-toggle{
+  background-color: #4CA4D8 !important;
+}
+
+.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu {
+    background: #4CA4D8;
+    border: none;
+    border-top: 3px solid #0E66A5;
+}
+
+.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu li {
+    background: #4CA4D8;
+}
+
+.navbar-inverse .container .navbar-collapse .nav .dropdown .dropdown-menu li a {
+    background: #4CA4D8;
+}
