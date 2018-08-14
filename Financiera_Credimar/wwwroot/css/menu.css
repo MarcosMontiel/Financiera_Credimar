@@ -2,16 +2,25 @@
     background: #F5F5F5;
 }
 
+/* Menu start */
 .nav-wrapper a {
     padding-left: 20px;
     font-weight: bold;
     letter-spacing: 3px;
     color: #F5F5F5;
 }
+/* Menu end */
 
-/*Footer*/
-.page-footer p {
-    padding-left: 20px;
-    font-weight: bold;
-    padding-bottom: 35px;
+/* Formulario start */
+.wrap {
+    width: 50%;
+    margin: auto;
+    padding-top: 20px;
 }
+
+.wrap div .card-panel .header2 {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+/* Formulario end */

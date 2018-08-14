@@ -5,10 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["Title"] - CREDIMAR</title>
         <environment include="Development">
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-                  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-                  crossorigin="anonymous">
             <link rel="stylesheet" href="~/materialize/css/materialize.css" />
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="stylesheet" href="~/css/menu.css" />
         </environment>
         <environment exclude="Development">
@@ -26,9 +24,6 @@
 
         <div class="content">
             @RenderBody()
-            <footer class="page-footer blue lighten-1">
-                <p>&copy; 2018 - CREDIMAR</p>
-            </footer>
         </div>
 
         <environment include="Development">

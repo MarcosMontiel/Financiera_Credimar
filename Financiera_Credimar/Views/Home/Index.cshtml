@@ -1,3 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model Financiera_Credimar.Models.UsuUsuario
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row wrap">
+    <div class="col s12 m12 l12">
+        <div class="card-panel">
+            <h4 class="header2">Login</h4>
+            <div class="row">
+                <form class="col s12" asp-controller="Home" asp-action="Index" method="post">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input asp-for="User" id="icon_prefix" type="text" class="validate">
+                            <label asp-for="User" for="icon_prefix">Usuario</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">https</i>
+                            <input asp-for="Password" id="icon_password" type="password" class="validate">
+                            <label asp-for="Password" for="icon_password">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row button">
+                        <div class="input-field col s12">
+                            <button type="submit" class="waves-effect waves-light btn-large teal lighten-2">Acceder <i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
