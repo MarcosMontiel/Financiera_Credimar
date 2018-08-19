@@ -14,20 +14,30 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
-                            <input asp-for="User" id="icon_prefix" type="text" class="validate">
+                            <input asp-for="User" id="icon_prefix" type="text" class="validate" />
                             <label asp-for="User" for="icon_prefix">Usuario</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">https</i>
-                            <input asp-for="Password" id="icon_password" type="password" class="validate">
-                            <label asp-for="Password" for="icon_password">Contraseña</label>
+                            <input asp-for="Password" id="icon_password" type="password" class="validate" />
+                            <label asp-for="Password" for="icon_password">Password</label>
                         </div>
                     </div>
                     <div class="row button">
-                        <div class="input-field col s12">
-                            <button type="submit" class="waves-effect waves-light btn-large teal lighten-2">Acceder <i class="material-icons right">send</i></button>
+                        <div class="input-field col s4 m4 l4">
+                            <button type="submit" class="waves-effect waves-light btn-large teal lighten-2">
+                                Acceder <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                        <div class="error col s8 m8 l8">
+                            @if (ViewData["error"] != null)
+                            {
+                                <p style="font-size: 16px; font-weight: bold; color: #f44336; padding: 14px 0px 0px 40px">
+                                    @ViewData["error"]
+                                </p>
+                            }
                         </div>
                     </div>
                 </form>

@@ -11,7 +11,7 @@
 }
 /* Menu end */
 
-/* Formulario start */
+/* Formulario Login start */
 .wrap {
     width: 50%;
     margin: auto;
@@ -23,4 +23,19 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-/* Formulario end */
+/* Formulario Login end */
+
+/* Formulario Index start */
+.index_form {
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.index_form div .card-panel .button_form {
+    background: #B2DFDB;
+    margin: 0;
+    padding: 10px 10px 10px 30px;
+    border-radius: 5px;
+}
+/* Formulario Index start */

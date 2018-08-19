@@ -4,24 +4,105 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Financiera_Credimar.Models;
+using MimeKit;
+using MailKit.Net.Smtp;
+using System;
 
 namespace Financiera_Credimar.Controllers
 {
     public class ComPersonaController : Controller
     {
-        private readonly CredimarContext _context;
+        // Inicialización DataContext
+        readonly CredimarContext _context;
 
+        // Constructor
         public ComPersonaController(CredimarContext context)
         {
             _context = context;
         }
 
-        // GET: ComPersona
-        public async Task<IActionResult> Index()
+        // Obtiene resultados de la tabla ComPersona.
+        public async Task<IActionResult> Index(string user, string search_person)
         {
-            var credimarContext = _context.ComPersona.Include(c => c.ComCatGenero);
-            return View(await credimarContext.ToListAsync());
+            try
+            {
+                var persona = from s in _context.ComPersona select s;
+                persona = persona.Include(c => c.ComCatGenero);
+
+                // Obtener valores de usuario
+                int userID = Convert.ToInt32(user);
+                var validaUser = await _context.UsuUsuario.SingleOrDefaultAsync(m => m.ID == userID);
+                if (validaUser != null)
+                {
+                    ViewData["idUser"] = validaUser.ID;
+                    ViewData["usName"] = validaUser.User;
+                    ViewData["usRol"] = validaUser.FKUsuCatRol;
+                    ViewData["usState"] = validaUser.FKUsuCatEstado;
+                }
+
+                // Caja de búsqueda
+                ViewData["filter_name"] = search_person;
+                if (!string.IsNullOrEmpty(search_person))
+                {
+                    persona = persona.Where(s => s.Nombre.Contains(search_person) || s.APaterno.Contains(search_person));
+                }
+
+                return View(await persona.ToListAsync());
+            }
+            catch (Exception ex)
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Credimar Exceptions", "marcosmontiel.excepciones@gmail.com"));
+                message.To.Add(new MailboxAddress("Reception", "marcos-gab14@hotmail.com"));
+                message.Subject = "Exceptions";
+                message.Body = new TextPart("plain")
+                {
+                    Text = "Excepción encontrada: " + ex.StackTrace
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("marcosmontiel.excepciones@gmail.com", "PruebaExcepciones123");
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+                return null;
+            }
         }
+
+        // Redirecciona a la vista Create. Método Get
+        public IActionResult Create()
+        {
+            try
+            {
+                ViewData["FKComCatGenero"] = new SelectList(_context.ComCatGenero, "ID", "Valor");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Credimar Exceptions", "marcosmontiel.excepciones@gmail.com"));
+                message.To.Add(new MailboxAddress("Reception", "marcos-gab14@hotmail.com"));
+                message.Subject = "Exceptions";
+                message.Body = new TextPart("plain")
+                {
+                    Text = "Excepción encontrada: " + ex.StackTrace
+                };
+
+                using (var client = new SmtpClient())
+                {
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("marcosmontiel.excepciones@gmail.com", "PruebaExcepciones123");
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+                return null;
+            }
+        }
+
+
+
 
         // GET: ComPersona/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -42,12 +123,6 @@ namespace Financiera_Credimar.Controllers
             return View(comPersona);
         }
 
-        // GET: ComPersona/Create
-        public IActionResult Create()
-        {
-            ViewData["FKComCatGenero"] = new SelectList(_context.ComCatGenero, "ID", "Valor");
-            return View();
-        }
 
         // POST: ComPersona/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

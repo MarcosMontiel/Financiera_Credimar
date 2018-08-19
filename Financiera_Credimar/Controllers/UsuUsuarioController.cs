@@ -1,18 +1,20 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Financiera_Credimar.Models;
+using Microsoft.AspNetCore.Authorization;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace Financiera_Credimar.Controllers
 {
     public class UsuUsuarioController : Controller
     {
-        private readonly CredimarContext _context;
-
+        // Inicialización DataContext
+        readonly CredimarContext _context;
         public UsuUsuarioController(CredimarContext context)
         {
             _context = context;

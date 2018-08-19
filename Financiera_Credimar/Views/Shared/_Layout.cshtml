@@ -15,9 +15,24 @@
     </head>
     <body>
         <!--MENU START-->
+        <!--Cuenta-->
+        <ul id="dropdown_account" class="dropdown-content">
+            <li><a><i class="material-icons left">exit_to_app</i> Salir</a></li>
+        </ul>
+        <!--Persona-->
+        <ul id="dropdown_people" class="dropdown-content">
+            <li><a asp-area="" asp-controller="ComPersona" asp-action="Index" asp-route-user="@ViewData["idUser"]"><i class="material-icons left">person</i> Persona</a></li>
+        </ul>
         <nav>
-            <div class="nav-wrapper blue lighten-1">
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo">CREDIMAR</a>
+            <div class="nav-wrapper teal lighten-2">
+                <a asp-area="" asp-controller="Home" asp-action="About" asp-route-user="@ViewData["idUser"]" class="brand-logo">CREDIMAR</a>
+                @if (ViewData["usName"] != null)
+                {
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown_people"><i class="material-icons left">person</i> Persona <i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown_account"><i class="material-icons left">person</i> @ViewData["usName"] <i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                }
             </div>
         </nav>
         <!--MENU END-->
@@ -40,6 +55,25 @@
             </script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
+
+        <script>
+            var collapsibleElem = document.querySelector('.collapsible');
+ 
+            $(function () {
+                $(".dropdown-trigger").dropdown();
+                $('.sidenav').sidenav();
+            })
+        </script>
+
+        <script>
+            $('.dropdown-content').dropdown({
+                inDuratio: 300,
+                outDuratio: 225,
+                constrainWidth: true,
+                coverTrigger: false,
+                hover: true,
+            })
+        </script>
 
         @RenderSection("Scripts", required: false)
     </body>
